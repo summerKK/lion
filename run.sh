@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # 定义变量
+CURRENT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 REPO_URL="https://github.com/aurora-develop/aurora/archive/refs/heads/main.zip"
-EXECUTABLE="gpt-free"
-TMP_DIR="tmp"
+EXECUTABLE="$CURRENT_DIR/gpt-free"
+TMP_DIR="$CURRENT_DIR/tmp"
+SOURCE_CODE_DIR="$TMP_DIR/aurora-main"
 
 # 函数：清理
 clean() {
@@ -18,6 +20,8 @@ download() {
     mkdir -p "$TMP_DIR"
     curl -sL "$REPO_URL" -o "$TMP_DIR/code.zip"
     unzip -q "$TMP_DIR/code.zip" -d "$TMP_DIR"
+    mv "$SOURCE_CODE_DIR"/* "$TMP_DIR"
+    rm -rf "$SOURCE_CODE_DIR"
 }
 
 # 函数：更新依赖并整理
