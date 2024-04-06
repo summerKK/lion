@@ -33,17 +33,17 @@ tidy() {
 # 函数：编译代码
 build() {
     echo "Building executable..."
-    go build -o "../$EXECUTABLE"
+    go build -o "$EXECUTABLE"
 }
 
 # 函数：清理临时目录
 clean_tmp() {
     echo "Cleaning temporary directory..."
-    cd ../ && rm -rf "$TMP_DIR"
+    rm -rf "$TMP_DIR"
 }
 
 start(){
-  ./$EXECUTABLE
+  $EXECUTABLE
 }
 
 # 主函数
