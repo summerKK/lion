@@ -1,26 +1,29 @@
 #!/bin/bash
 
 # 定义变量
-REPO_URL="git@github.com:aurora-develop/aurora.git"
+REPO_URL="https://github.com/aurora-develop/aurora/archive/refs/heads/main.zip"
 EXECUTABLE="gpt-free"
+TMP_DIR="tmp"
 
 # 函数：清理
 clean() {
     echo "Cleaning..."
     rm -f "$EXECUTABLE"
-    rm -rf tmp
+    rm -rf "$TMP_DIR"
 }
 
 # 函数：下载代码
 download() {
-    echo "Downloading code from $REPO_URL..."
-    git clone "$REPO_URL" tmp
+    echo "Downloading and extracting code from $REPO_URL..."
+    mkdir -p "$TMP_DIR"
+    curl -sL "$REPO_URL" -o "$TMP_DIR/code.zip"
+    unzip -q "$TMP_DIR/code.zip" -d "$TMP_DIR"
 }
 
 # 函数：更新依赖并整理
 tidy() {
     echo "Tidying modules..."
-    cd tmp && go mod tidy
+    cd "$TMP_DIR" && go mod tidy
 }
 
 # 函数：编译代码
@@ -32,7 +35,7 @@ build() {
 # 函数：清理临时目录
 clean_tmp() {
     echo "Cleaning temporary directory..."
-    cd ../ && rm -rf tmp
+    cd ../ && rm -rf "$TMP_DIR"
 }
 
 start(){
