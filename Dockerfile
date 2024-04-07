@@ -10,4 +10,4 @@ COPY gpt-free-linux /usr/src/app/gpt-free-linux
 RUN chmod +x /usr/src/app/gpt-free-linux
 
 # 在镜像中运行脚本文件
-CMD ["gpt-free-linux"]
+CMD ["/usr/src/app/gpt-free-linux"]
