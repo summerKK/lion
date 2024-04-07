@@ -82,12 +82,12 @@
 ## 增加定时任务
 
 - `Render`构建的免费项目如果长时间没激活会自动回收.我们可以加一些定时任务来不断访问项目,让项目不会自动关闭
-- 申请 [cron-job](https://cron-job.org/)
+- 申请 [cron-job](https://cron-job.org/) 
 - 配置定时任务
 
   ![img.png](docs/images/img8.png)
 
 ## 感谢
 
-- 感谢[aurora](https://github.com/aurora-develop/aurora?tab=readme-ov-file)项目的开源,让我们可以白嫖`gpt`😋
-- 可以给[aurora](https://github.com/aurora-develop/aurora?tab=readme-ov-file)多点点`star`
+- 感谢 [aurora](https://github.com/aurora-develop/aurora?tab=readme-ov-file) 项目的开源,让我们可以白嫖`gpt`😋
+- 可以给 [aurora](https://github.com/aurora-develop/aurora?tab=readme-ov-file) 多点点`star`
