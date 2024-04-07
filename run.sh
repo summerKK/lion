@@ -42,11 +42,6 @@ clean_tmp() {
     rm -rf "$TMP_DIR"
 }
 
-add_git(){
-  cd "$CURRENT_DIR"
-  git add .
-}
-
 # 主函数
 main() {
     clean
