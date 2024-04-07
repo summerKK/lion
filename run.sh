@@ -3,7 +3,7 @@
 # 定义变量
 CURRENT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 REPO_URL="https://github.com/aurora-develop/aurora/archive/refs/heads/main.zip"
-EXECUTABLE="$CURRENT_DIR/gpt-free"
+EXECUTABLE="$CURRENT_DIR/gpt-free-linux"
 TMP_DIR="$CURRENT_DIR/tmp"
 SOURCE_CODE_DIR="$TMP_DIR/aurora-main"
 
@@ -33,17 +33,14 @@ tidy() {
 # 函数：编译代码
 build() {
     echo "Building executable..."
-    go build -o "$EXECUTABLE"
+    # 编译linux平台
+    GOOS=linux GOARCH=amd64 && go build -o "$EXECUTABLE"
 }
 
 # 函数：清理临时目录
 clean_tmp() {
     echo "Cleaning temporary directory..."
     rm -rf "$TMP_DIR"
-}
-
-start(){
-  $EXECUTABLE
 }
 
 # 主函数
@@ -53,7 +50,6 @@ main() {
     tidy
     build
     clean_tmp
-    start
 }
 
 # 执行主函数
