@@ -26,7 +26,26 @@ jobs:
       - name: commit and push
         run: |
           git add .
-          git config --global user.name 'workflow'
-          git config --global user.email 'workflow@users.noreply.github.com'
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
           git commit -am "Automated build and upload executable"
           git push
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1 # 设置 Docker Buildx
+        with:
+          version: latest
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1 # 登录到 Docker Hub
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # 通过 Secrets 存储 Docker 用户名
+          password: ${{ secrets.DOCKER_PASSWORD }} # 通过 Secrets 存储 Docker 密码
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2 # 构建和推送 Docker 镜像
+        with:
+          context: . # Dockerfile 和其他构建文件所在的目录
+          file: ./Dockerfile # Dockerfile 的路径
+          push: true
+          tags: summerkK/gpt3.5-api:latest
