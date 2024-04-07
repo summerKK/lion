@@ -48,4 +48,4 @@ jobs:
           context: . # Dockerfile 和其他构建文件所在的目录
           file: ./Dockerfile # Dockerfile 的路径
           push: true
-          tags: su943515688/gpt3.5-api:latest
+          tags: su943515688/gpt3.5-api:latest # 这里的前缀需要替换你自己的仓库名
