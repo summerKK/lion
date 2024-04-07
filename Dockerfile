@@ -1,5 +1,5 @@
 # 使用 Go 1.21 官方镜像作为构建环境
-FROM golang:1.21-bullseye
+FROM golang:1.21 AS builder
 
 # 设置工作目录为 /usr/src/app
 WORKDIR /usr/src/app
