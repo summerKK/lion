@@ -33,14 +33,18 @@ tidy() {
 # 函数：编译代码
 build() {
     echo "Building executable..."
-    # 编译linux平台
-    GOOS=linux GOARCH=amd64 && go build -o "$EXECUTABLE"
+    go build -o "$EXECUTABLE"
 }
 
 # 函数：清理临时目录
 clean_tmp() {
     echo "Cleaning temporary directory..."
     rm -rf "$TMP_DIR"
+}
+
+add_git(){
+  cd "$CURRENT_DIR"
+  git add .
 }
 
 # 主函数

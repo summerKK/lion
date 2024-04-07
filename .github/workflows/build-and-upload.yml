@@ -1,0 +1,29 @@
+name: Build and Upload Executable
+
+on:
+  push:
+    branches:
+      - main  # 或者是你的默认分支
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 运行环境
+
+    steps:
+      - uses: actions/checkout@v2  # 检出代码
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.22'  # 指定 Go 版本
+
+      - name: Copy and Execute Script
+        run: |
+          bash run.sh  # 执行脚本
+
+      - name: Upload to repository
+        uses: softprops/action-gh-release@v1
+        with:
+          files: gpt-free-linux  # 指定要上传的文件
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token
