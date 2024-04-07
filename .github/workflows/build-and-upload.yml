@@ -17,7 +17,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: '1.21'  # 指定 Go 版本
+          go-version: '1.22'  # 指定 Go 版本
 
       - name: Copy and Execute Script
         run: |
