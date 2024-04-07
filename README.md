@@ -5,7 +5,8 @@
   构建
 - `Render`用起来确实很方便,每个月有`750`小时的免费额度,还能部署到`新加坡`,速度也挺快
 - 所以我们通过自己构建镜像的方式来白嫖`chatgpt api`
-- 如果不需要在`Render`上面构建请去访问 [aurora](https://github.com/aurora-develop/aurora?tab=readme-ov-file) 项目
+- 如果不需要在`Render`上面构建请去访问 [aurora](https://github.com/aurora-develop/aurora?tab=readme-ov-file)
+  项目,那里有更多的构建方式
 
 ## 项目流程
 
@@ -41,9 +42,11 @@
       ```
 
 - 在项目里面设置 `secrets`,我们需要用它把打包好的镜像上传到`Docker Hub`
+
   ![img.png](docs/images/img0.png)
 
 - 修改`workflow`
+
   ![img.png](docs/images/img1.png)
 
 ## 实施
@@ -53,6 +56,7 @@
 - 构建完成后你的`Docker Hub`会多出来一个镜像`xxx/gpt3.5-api`
 
 - 启动服务
+
   ![img.png](docs/images/img2.png)
   ![img.png](docs/images/img3.png)
   ![img.png](docs/images/img4.png)
@@ -60,6 +64,7 @@
     - 地区记得选`新加坡`,方案选`free`
 
 - 服务构建成功
+
   ![img.png](docs/images/img6.png)
 
 - 测试
@@ -79,6 +84,7 @@
 - `Render`构建的免费项目如果长时间没激活会自动回收.我们可以加一些定时任务来不断访问项目,让项目不会自动关闭
 - 申请 [cron-job](https://cron-job.org/)
 - 配置定时任务
+
   ![img.png](docs/images/img8.png)
 
 ## 感谢
